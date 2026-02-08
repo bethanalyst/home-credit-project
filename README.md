@@ -2,6 +2,10 @@
 
 This is my home credit risk demo project.
 
+# In your .qmd file
+from data_preparation import run_preparation_pipeline
+# Now you can call the function directly
+
 # Clean and transform the application data based on your EDA findings by fixing:
 
 import pandas as pd
