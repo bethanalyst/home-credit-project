@@ -2,9 +2,9 @@
 
 This is my home credit risk demo project.
 
-# Home Credit Default Risk: Data Preparation Pipeline
+# Home Credit Default Risk: Data Preparation 
 
-This repository contains a modular data preparation pipeline built in R to process and engineer features for credit risk modeling. The goal is to transform raw application data and supplementary relational data into a clean, model-ready format while ensuring strict train/test consistency.
+This repository contains a data preparation pipeline built in R to process and engineer features for home credit risk modeling. The goal is to transform raw application data into a clean, model-ready format while ensuring strict train/test consistency.
 
 ## 🛠️ Pipeline Features
 
