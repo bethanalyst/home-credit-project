@@ -6,7 +6,7 @@ This is my home credit risk demo project.
 
 This repository contains a data preparation pipeline built in R to process and engineer features for home credit risk modeling. The goal is to transform raw application data into a clean, model-ready format while ensuring strict train/test consistency.
 
-## 🛠️ Pipeline Features
+## Pipeline Features
 
 ### 1. Data Cleaning & EDA Fixes
 - **Anomaly Handling:** Fixed the `DAYS_EMPLOYED` anomaly where the value `365243` (approx. 1000 years) was used as a placeholder.
@@ -26,7 +26,7 @@ Aggregates supplementary data to the applicant level (`SK_ID_CURR`):
 - **Previous Applications:** Total application counts, approval rates, and refusal history.
 - **Installments:** Late payment percentages and payment trends.
 
-## 🚀 How to Use
+## How to Use
 
 1. **Source the script** in your R session or Quarto document:
    ```r
