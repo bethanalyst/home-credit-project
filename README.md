@@ -39,10 +39,12 @@ aggs <- aggregate_supplementary(bureau, previous_application, installments_payme
 clean_data <- clean_application_data(application_train)
 final_data <- join_features(clean_data, aggs)
 
-## Update: Modeling (Feb 22nd); 
+## Update: Modeling (Feb 22nd):
 
 I explored a diverse set of candidate algorithms, including Logistic Regression (both with full and reduced feature sets), Random Forest, and XGBoost. The selection process was driven by a 3-fold cross-validation strategy on a 5,000-row subsample to identify the model with the highest Area Under the Curve (AUC), as accuracy alone was misleading due to the ~8% default rate imbalance. 
 
 While the baseline Majority Class Classifier provided an AUC of 0.91, the gradient boosting approach of XGBoost consistently outperformed simpler models by capturing non-linear relationships and interactions within the supplementary data from the bureau and installment files. After performing a Randomized Search to optimize hyperparameters like learning rate and tree depth, I selected XGBoost as my final model because it achieved the strongest discriminative power, yielding a cross-validated AUC of 0.762 and a final Kaggle score of 0.69. This model provides the most reliable balance of precision and recall, allowing the business to effectively differentiate between high-risk applicants and reliable borrowers.
 
+## Update: Model Card (March 8th):
 
+Using the code from the Modeling assignment previous, I built the model card based on this example from Google's Gemini 3.1 Flash Lite (https://deepmind.google/models/model-cards/gemini-3-1-flash-lite/). Also following feedback about some problems with the code, fixed the code from the Modeling Assignment and updated that information in the Model Card. 
