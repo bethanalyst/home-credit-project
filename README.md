@@ -4,9 +4,7 @@
 
 Many individuals struggle to get loans due to insufficient or non-existent credit histories. Home Credit strives to broaden financial inclusion by utilizing alternative data to predict clients' repayment abilities. The objective of this project was to build a robust end-to-end data pipeline and machine learning model to predict the probability that an applicant will default on a loan. By identifying high-risk borroIrs more accurately, the business can reduce financial loss while approving more reliable "unbanked" applicants.
 
-## Solution
-
-I developed a comprehensive solution consisting of:
+## Solutions
 
 Data Engineering Pipeline: An R-based pipeline that cleans anomalies (such as the 1000-year employment placeholder), handles missing values via training-set medians, and normalizes time offsets.
 
@@ -18,13 +16,13 @@ Machine Learning Model: After evaluating Logistic Regression and Random Forest, 
 
 Precision in Risk Assessment: By moving beyond a simple "Majority Class" baseline (which was misleading due to the 8% default rate imbalance), My XGBoost model provides the discriminative poIr needed to flag defaults that traditional methods miss.
 
-Revenue Growth: The model's ability to interpret alternative data allows the business to safely lend to "thin-file" customers who would otherwise be rejected, expanding the customer base without increasing the relative risk.
+Revenue Growth: The model's ability to interpret alternative data allows the business to safely lend to customers who would otherwise be rejected under traditional banking conditions, expanding the customer base without increasing the relative risk.
 
 Operational Efficiency: The automated aggregation of supplementary files (Bureau, Previous Applications, and Installments) reduces the manual effort required for underwriter review.
 
 ## My Contribution
 
-I cleaned the data and created a modeling notebook of the cleaned data. Then, from the results, created a model card to highlight the results. 
+I cleaned the data using R Studio (R) and then created a modeling notebook of the cleaned data. Then, I created a model card to document model limitations and model use. 
 
 ## Difficulties Encountered
 
@@ -35,11 +33,12 @@ Class Imbalance: With only ~8% of applicants defaulting, standard accuracy was a
 Computational Constraints: Processing large supplementary files (like Installment Payments) required efficient data aggregation to prevent memory errors during the join process.
 
 ## What I Learned
+
 Importance of Domain Knowledge: Transforming "days" into "years" and creating debt-to-income ratios proved more predictive than raw data alone.
 
 Model Transparency: Through building a Model Card (inspired by Google's Gemini 3.1 Flash Lite), I learned the importance of documenting model limitations and intended use cases for stakeholders.
 
-Iterative Development: I learned how to refine code based on peer feedback, specifically regarding the transition from the initial modeling phase to the final model card implementation.
+Iterative Development: I learned how to refine code based on peer feedback (in the context of this project, since it's school related, the professor provided feedback on double checking the effectiveness of the model based on the AUC), specifically regarding the transition from the initial modeling phase to the final model card implementation.
 
 ## Repository Structure
 
