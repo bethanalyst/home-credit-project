@@ -14,7 +14,7 @@ Machine Learning Model: After evaluating Logistic Regression and Random Forest, 
 
 ## Business Value of the Solution
 
-Precision in Risk Assessment: By moving beyond a simple "Majority Class" baseline (which was misleading due to the 8% default rate imbalance), My XGBoost model provides the discriminative poIr needed to flag defaults that traditional methods miss.
+Precision in Risk Assessment: By moving beyond a simple "Majority Class" baseline (which was misleading due to the 8% default rate imbalance), my XGBoost model provides the discriminative poIr needed to flag defaults that traditional methods miss.
 
 Revenue Growth: The model's ability to interpret alternative data allows the business to safely lend to customers who would otherwise be rejected under traditional banking conditions, expanding the customer base without increasing the relative risk.
 
