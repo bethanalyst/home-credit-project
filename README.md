@@ -1,10 +1,10 @@
 # Home Credit Default Risk: Data Pipeline & Predictive Modeling
 
-## 1. Business Problem & Project Objective
+## Business Problem & Project Objective
 
 Many individuals struggle to get loans due to insufficient or non-existent credit histories. Home Credit strives to broaden financial inclusion by utilizing alternative data to predict clients' repayment abilities. The objective of this project was to build a robust end-to-end data pipeline and machine learning model to predict the probability that an applicant will default on a loan. By identifying high-risk borroIrs more accurately, the business can reduce financial loss while approving more reliable "unbanked" applicants.
 
-## 2. My Solution
+## Solution
 
 I developed a comprehensive solution consisting of:
 
@@ -14,7 +14,7 @@ Advanced Feature Engineering: I engineered financial ratios—specifically Credi
 
 Machine Learning Model: After evaluating Logistic Regression and Random Forest, I selected XGBoost. It outperformed simpler models by capturing non-linear interactions within the bureau and installment data, achieving a cross-validated AUC of 0.762.
 
-## 3. Business Value of the Solution
+## Business Value of the Solution
 
 Precision in Risk Assessment: By moving beyond a simple "Majority Class" baseline (which was misleading due to the 8% default rate imbalance), My XGBoost model provides the discriminative poIr needed to flag defaults that traditional methods miss.
 
@@ -22,11 +22,11 @@ Revenue Growth: The model's ability to interpret alternative data allows the bus
 
 Operational Efficiency: The automated aggregation of supplementary files (Bureau, Previous Applications, and Installments) reduces the manual effort required for underwriter review.
 
-## 4. My Contribution
+## My Contribution
 
 I cleaned the data and created a modeling notebook of the cleaned data. Then, from the results, created a model card to highlight the results. 
 
-## 5. Difficulties Encountered
+## Difficulties Encountered
 
 Data Leakage: I had to ensure that imputation (using medians) was calculated only on the training set and then applied to the test set to avoid biased results.
 
@@ -34,7 +34,7 @@ Class Imbalance: With only ~8% of applicants defaulting, standard accuracy was a
 
 Computational Constraints: Processing large supplementary files (like Installment Payments) required efficient data aggregation to prevent memory errors during the join process.
 
-## 6. What I Learned
+## What I Learned
 Importance of Domain Knowledge: Transforming "days" into "years" and creating debt-to-income ratios proved more predictive than raw data alone.
 
 Model Transparency: Through building a Model Card (inspired by Google's Gemini 3.1 Flash Lite), I learned the importance of documenting model limitations and intended use cases for stakeholders.
