@@ -22,7 +22,7 @@ Operational Efficiency: The automated aggregation of supplementary files (Bureau
 
 ## My Contribution
 
-I cleaned the data using R Studio (R) and then created a modeling notebook of the cleaned data. Then, I created a model card to document model limitations and model use. 
+I initially cleaned the data using R Studio (R). But then changed to Python once I moved my modeling notebook to Jupytr but still maintained the qualities of the cleaned data. Then, I created a model card to document model limitations and model use (also in Jupytr). 
 
 ## Difficulties Encountered
 
