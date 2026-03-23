@@ -1,50 +1,48 @@
-# home-credit-project
+# Home Credit Default Risk: Data Pipeline & Predictive Modeling
 
-This is my home credit risk demo project.
+## 1. Business Problem & Project Objective
+Many individuals struggle to get loans due to insufficient or non-existent credit histories. Home Credit strives to broaden financial inclusion by utilizing alternative data (e.g., telco and transactional information) to predict clients' repayment abilities.
 
-# Home Credit Default Risk: Data Preparation 
+The objective of this project was to build a robust end-to-end data pipeline and machine learning model to predict the probability that an applicant will default on a loan. By identifying high-risk borrowers more accurately, the business can reduce financial loss while approving more reliable "unbanked" applicants.
 
-This repository contains a data preparation pipeline built in R to process and engineer features for home credit risk modeling. The goal is to transform raw application data into a clean, model-ready format while ensuring strict train/test consistency.
+## 2. Our Solution
+Our group developed a comprehensive solution consisting of:
 
-## Pipeline Features
+Data Engineering Pipeline: An R-based pipeline that cleans anomalies (such as the 1000-year employment placeholder), handles missing values via training-set medians, and normalizes time offsets.
 
-### 1. Data Cleaning & EDA Fixes
-- **Anomaly Handling:** Fixed the `DAYS_EMPLOYED` anomaly where the value `365243` (approx. 1000 years) was used as a placeholder.
-- **Missing Values:** Imputes `EXT_SOURCE_1`, `EXT_SOURCE_2`, and `EXT_SOURCE_3` using training set medians to avoid data leakage.
-- **Normalization:** Converted negative time offsets (Birth, Registration, ID Publish) into absolute positive values.
+Advanced Feature Engineering: We engineered financial ratios—specifically Credit-to-Income, Annuity-to-Income, and Loan-to-Value (LTV)—to better capture borrower stress.
 
-### 2. Feature Engineering
-- **Demographics:** Updated Age and Employment duration from days to years.
-- **Financial Ratios:** - **Credit-to-Income:** Total loan amount relative to annual income.
-  - **Annuity-to-Income:** Monthly debt-to-income burden.
-  - **LTV (Loan-to-Value):** Ratio of goods price to credit amount.
-- **Predictive Indicators:** Added binary flags for missing data in external sources.
+Machine Learning Model: After evaluating Logistic Regression and Random Forest, we selected XGBoost. It outperformed simpler models by capturing non-linear interactions within the bureau and installment data, achieving a cross-validated AUC of 0.762.
 
-### 3. Data Aggregation
-Aggregates supplementary data to the applicant level (`SK_ID_CURR`):
-- **Bureau:** Prior credit counts, debt-to-credit ratios, and overdue amounts.
-- **Previous Applications:** Total application counts, approval rates, and refusal history.
-- **Installments:** Late payment percentages and payment trends.
+## 3. Business Value of the Solution
+Precision in Risk Assessment: By moving beyond a simple "Majority Class" baseline (which was misleading due to the 8% default rate imbalance), our XGBoost model provides the discriminative power needed to flag defaults that traditional methods miss.
 
-## How to Use
+Revenue Growth: The model's ability to interpret alternative data allows the business to safely lend to "thin-file" customers who would otherwise be rejected, expanding the customer base without increasing the relative risk.
 
-1. **Source the script** in your R session or Quarto document:
-   ```r
-   source("data_preparation.R")
+Operational Efficiency: The automated aggregation of supplementary files (Bureau, Previous Applications, and Installments) reduces the manual effort required for underwriter review.
 
-# Aggregate supplementary files
-aggs <- aggregate_supplementary(bureau, previous_application, installments_payments)
+## 4. My Contribution
 
-# Clean and Join
-clean_data <- clean_application_data(application_train)
-final_data <- join_features(clean_data, aggs)
+My contribution....
 
-## Update: Modeling (Feb 22nd):
+## 5. Difficulties Encountered
+Data Leakage: We had to ensure that imputation (using medians) was calculated only on the training set and then applied to the test set to avoid biased results.
 
-I explored a diverse set of candidate algorithms, including Logistic Regression (both with full and reduced feature sets), Random Forest, and XGBoost. The selection process was driven by a 3-fold cross-validation strategy on a 5,000-row subsample to identify the model with the highest Area Under the Curve (AUC), as accuracy alone was misleading due to the ~8% default rate imbalance. 
+Class Imbalance: With only ~8% of applicants defaulting, standard accuracy was a poor metric. We had to pivot our strategy to focus on Area Under the Curve (AUC) to ensure the model actually learned the characteristics of a defaulter.
 
-While the baseline Majority Class Classifier provided an AUC of 0.91, the gradient boosting approach of XGBoost consistently outperformed simpler models by capturing non-linear relationships and interactions within the supplementary data from the bureau and installment files. After performing a Randomized Search to optimize hyperparameters like learning rate and tree depth, I selected XGBoost as my final model because it achieved the strongest discriminative power, yielding a cross-validated AUC of 0.762 and a final Kaggle score of 0.69. This model provides the most reliable balance of precision and recall, allowing the business to effectively differentiate between high-risk applicants and reliable borrowers.
+Computational Constraints: Processing large supplementary files (like Installment Payments) required efficient data aggregation to prevent memory errors during the join process.
 
-## Update: Model Card (March 8th):
+## 6. What I Learned
+Importance of Domain Knowledge: Transforming "days" into "years" and creating debt-to-income ratios proved more predictive than raw data alone.
 
-Using the code from the Modeling assignment previous, I built the model card based on this example from Google's Gemini 3.1 Flash Lite (https://deepmind.google/models/model-cards/gemini-3-1-flash-lite/). Also following feedback about some problems with the code, fixed the code from the Modeling Assignment and updated that information in the Model Card. 
+Model Transparency: Through building a Model Card (inspired by Google's Gemini 3.1 Flash Lite), I learned the importance of documenting model limitations and intended use cases for stakeholders.
+
+Iterative Development: I learned how to refine code based on peer feedback, specifically regarding the transition from the initial modeling phase to the final model card implementation.
+
+## Repository Structure
+
+data_preparation.R: The primary cleaning and feature engineering script.
+
+Modeling_Assignment.ipynb: Contains the XGBoost training, cross-validation, and interpreted results.
+
+Model_Card.pdf: Documentation of model performance and ethics.
